@@ -1,0 +1,72 @@
+== Micro Sessions
+
+In terms of passing data amongst HTTP requests there are really two options:
+* Param or form data passing
+* Storing in cookies
+* Storing in server-side session, keyed off an ID stored as a cookie.
+
+For a certain application where you're using number 3, this comes at a cost - the session is "global".  In other words, in a single browser window with multiple tabs, the server side cannot distinguish between individual "sessions" *within* that browser session. This gem introduces a third, more granular method:
+* Storing in server-side session, keyed off an ID stored as a cookie *and* keyed off a request parameter.
+
+This could be useful in instances such as a very complex wizard where transmitting the entire history of data RESTfully via param passing may not be feasible, yet you'd still like to support multiple tabs within the same browser window separately.
+
+== In-Progress
+
+This gem is not useable and is being continually worked on.  Will be released as 0.1.0 once reasonably working and stable.
+
+DO NOT USE!
+
+== Installation
+
+This gem requires ActionPack and ActiveSupport 3.0 or greater.
+
+Include the gem in your Gemfile:
+  
+  gem "micro_sessions"
+
+== Usage
+
+Simply include the middleware in your controller:
+
+  class ApplicationController
+    use MicroSessions::Middleware
+  end
+
+By default the name of the request parameter used to differentiate micro-sessions is "_msid", though this can be configured:
+  
+  class ApplicationController
+    use MicroSessions::Middleware, :key => "_msid"
+  end
+
+By default the key generated will be a 10-digit random hash, though this can be configured as well:
+
+  class ApplicationController
+    use MicroSessions::Middleware, :type => :integer, :length => 10
+  end
+
+Valid values for +:type+: are:
+* +:random_hash+
+* +:integer+  (simply increments from one)
+* +:random_integer+ (random integer with a maximum of +:length+ digits)
+
+Session data is accessible to the controller and view through the +micro_session+ object, which works identically to the +session+ object but it specific to the micro-session:
+
+  micro_session[:key] = "Value"
+  micro_session[:key] # => "Value"
+
+When transitioning between pages for which you'd like to keep the micro-session alive, the request parameter must be passed along with any link, form, or redirect.  The preferred way is to make use of the new +:micro_session+ option on available on the +url_for+ helper, which will accept either a specific value or just "true" to use the "current" micro-session to this request:
+  
+  link_to user_path(@user, :micro_session => true)
+  redirect_to user_project_path([@user, @project], :micro_session => true)
+
+If you wish to transmit the identifier via a form, be sure to include the hidden field:
+  
+  <% form_for(@user) do |f| %>
+    <%= micro_session_hidden_field %>
+    ...
+  <% end %>
+
+Destroying a micro-session is as easy as:
+  
+  micro_session.destroy
+
