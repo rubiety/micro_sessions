@@ -10,12 +10,6 @@ For a certain application where you're using number 3, this comes at a cost - th
 
 This could be useful in instances such as a very complex wizard where transmitting the entire history of data RESTfully via param passing may not be feasible, yet you'd still like to support multiple tabs within the same browser window separately.
 
-== In-Progress
-
-This gem is not useable and is being continually worked on.  Will be released as 0.1.0 once reasonably working and stable.
-
-DO NOT USE!
-
 == Installation
 
 This gem requires ActionPack and ActiveSupport 3.0 or greater.
@@ -65,8 +59,4 @@ If you wish to transmit the identifier via a form, be sure to include the hidden
     <%= micro_session_hidden_field %>
     ...
   <% end %>
-
-Destroying a micro-session is as easy as:
-  
-  micro_session.destroy
 
