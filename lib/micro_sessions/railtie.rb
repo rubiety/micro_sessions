@@ -9,7 +9,9 @@ module MicroSessions
   
   class Railtie
     def self.insert
-      ActionView::Helpers::UrlHelper.include(MicroSessions::Helpers)
+      ActionController::Base.send(:include, MicroSessions)
+      ActionView::Helpers::UrlHelper.send(:include, MicroSessions::Helpers::UrlHelper)
+      ActionView::Helpers::FormTagHelper.send(:include, MicroSessions::Helpers::FormTagHelper)
     end
   end
 end

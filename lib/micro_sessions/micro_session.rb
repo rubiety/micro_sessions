@@ -1,35 +1,34 @@
 module MicroSessions
   class MicroSession
-    attr_accessor :param, :param_type, :length, :counter
+    def initialize(controller)
+      @controller = controller
+    end
     
-    def initialize(options = {})
-      options ||= {}
-      options.stringify_keys!
-      
-      self.param = options[:param] || "_msid"
-      self.key = options[:key] || "_micro_sessions"
-      self.param_type = options[:param_type] || :hash
-      self.length = options[:length] || 10
-      self.counter = options[:counter] || 1
+    def options
+      @controller.class.micro_session_options
     end
     
     def data
-      session[key][id] ||= {}
+      @controller.session[options[:key]][id] ||= {}
     end
     
-    delegate :empty?, :[], :[]=, :to => :data
+    delegate :empty?, :[], :[]=, :to_h, :to_hash, :to => :data
     
     def id
-      @id ||= generate_id
+      @id ||= id_from_params || generate_id
     end
     
     
     protected
     
+    def id_from_params
+      @controller.params[options[:param]] if @controller.params
+    end
+    
     def generate_id
-      case param_type
+      case options[:param_type]
       when :hash
-        ActiveSupport::SecureRandom.hex(length)
+        ActiveSupport::SecureRandom.hex(options[:length] / 2)
       when :integer
         self.counter += 1
       when :random_integer

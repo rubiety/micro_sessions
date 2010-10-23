@@ -1,13 +1,24 @@
 unless defined?(ActionController)
   begin
-    require 'action_pack'  
+    require "action_pack"  
+    require "action_controller"
+    require "action_view"
   rescue LoadError
-    require 'rubygems'
-    require_gem 'actionpack'
+    require "rubygems"
+    require_gem "actionpack"
   end
 end
 
-require "micro_sessions/micro_session"
-require "micro_sessions/middleware"
-require "micro_sessions/version"
-require "micro_sessions/railtie"
+module MicroSessions
+  extend ActiveSupport::Concern
+  extend ActiveSupport::Autoload
+  
+  autoload :Controller
+  autoload :Helpers
+  autoload :MicroSession
+  autoload :Railtie
+  
+  included do
+    include MicroSessions::Controller
+  end
+end

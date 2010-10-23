@@ -29,19 +29,19 @@ Include the gem in your Gemfile:
 Simply include the middleware in your controller:
 
   class ApplicationController
-    use MicroSessions::Middleware
+    micro_sessions
   end
 
 By default the name of the request parameter used to differentiate micro-sessions is "_msid", though this can be configured:
   
   class ApplicationController
-    use MicroSessions::Middleware, :key => "_msid"
+    micro_sessions :key => "_msid"
   end
 
 By default the key generated will be a 10-digit random hash, though this can be configured as well:
 
   class ApplicationController
-    use MicroSessions::Middleware, :type => :integer, :length => 10
+    micro_sessions :type => :integer, :length => 10
   end
 
 Valid values for +:type+: are:
