@@ -9,6 +9,7 @@ module MicroSessions
     end
     
     def data
+      @controller.session[options[:key]] ||= {}
       @controller.session[options[:key]][id] ||= {}
     end
     

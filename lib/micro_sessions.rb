@@ -16,9 +16,10 @@ module MicroSessions
   autoload :Controller
   autoload :Helpers
   autoload :MicroSession
-  autoload :Railtie
   
   included do
     include MicroSessions::Controller
   end
 end
+
+require "micro_sessions/railtie"
