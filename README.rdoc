@@ -26,6 +26,12 @@ Simply include the middleware in your controller:
     micro_sessions
   end
 
+From there you will have access to a +micro_session+ object in your controllers and views, just like the +session+ object.
+  
+  def new
+    micro_session[:key] = "Value"
+  end
+
 By default the name of the request parameter used to differentiate micro-sessions is "_msid", though this can be configured:
   
   class ApplicationController
