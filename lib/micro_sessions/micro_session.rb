@@ -13,7 +13,15 @@ module MicroSessions
       @controller.session[options[:key]][id] ||= {}
     end
     
-    delegate :empty?, :[], :[]=, :to_h, :to_hash, :to => :data
+    def url_options
+      if empty?
+        {}
+      else
+        {options[:param] => id}
+      end
+    end
+    
+    delegate :empty?, :[], :[]=, :to_h, :to_hash, :inspect, :to => :data
     
     def id
       @id ||= id_from_params || generate_id

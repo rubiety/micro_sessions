@@ -19,6 +19,7 @@ When %r{this gem is available in the Gemfile} do
     group :test do
       gem "capybara"
       gem "rspec"
+      gem "childprocess"
     end
   }
 end

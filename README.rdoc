@@ -57,7 +57,15 @@ Session data is accessible to the controller and view through the +micro_session
 When transitioning between pages for which you'd like to keep the micro-session alive, the request parameter must be passed along with any link, form, or redirect.  The preferred way is to make use of the new +:micro_session+ option on available on the +url_for+ helper, which will accept either a specific value or just "true" to use the "current" micro-session to this request:
   
   link_to user_path(@user, :micro_session => true)
-  redirect_to user_project_path([@user, @project], :micro_session => true)
+
+Note that depending on the context in which you're producing this URL, it may not work correctly.  Unfortunately the low-level url_for call in the Rails routing engine does not have access to the controller object (and hence the micro_session object), so I can't make this work outside of simple ActionView helpers.  You can always explicitly include the URL options by calling:
+  
+  micro_session.url_options  # => {"_msid" => "0123456789"}
+
+Can be used something like this:
+  
+  
+  redirect_to user_path(@user, micro_session.url_options)
 
 If you wish to transmit the identifier via a form, be sure to include the hidden field:
   
