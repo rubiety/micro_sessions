@@ -5,7 +5,7 @@ In terms of passing data amongst HTTP requests there are really two options:
 * Storing in cookies
 * Storing in server-side session, keyed off an ID stored as a cookie.
 
-For a certain application where you're using number 3, this comes at a cost - the session is "global".  In other words, in a single browser window with multiple tabs, the server side cannot distinguish between individual "sessions" *within* that browser session. This gem introduces a third, more granular method:
+For a certain application where you're using number 3, this comes at a cost - the session is "global".  In other words, in a single browser window with multiple tabs, the server side cannot distinguish between individual "sessions" *within* that browser session. This gem introduces a fourth, more granular method:
 * Storing in server-side session, keyed off an ID stored as a cookie *and* keyed off a request parameter.
 
 This could be useful in instances such as a very complex wizard where transmitting the entire history of data RESTfully via param passing may not be feasible, yet you'd still like to support multiple tabs within the same browser window separately.
