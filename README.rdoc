@@ -20,6 +20,8 @@ Include the gem in your Gemfile:
   
   gem "micro_sessions"
 
+NOTE: This gem currently only works with rails 3.0 and rails 3.1, but *not* rails 3.2, due to an issue with overriding url_for. If you want to help with this, see issue #1.
+
 == Usage
 
 Simply include the middleware in your controller:
