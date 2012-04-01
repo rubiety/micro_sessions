@@ -1,3 +1,5 @@
+{<img src="https://secure.travis-ci.org/rubiety/micro_sessions.png?branch=master" alt="Build Status" />}[http://travis-ci.org/rubiety/micro_sessions]
+
 == Micro Sessions
 
 In terms of passing data amongst HTTP requests there are really two options:
