@@ -30,7 +30,7 @@ end
 
 When %r{the rails application is running} do
   Dir.chdir(Cukagem.app_root) do
-    require "config/environment"
+    require File.expand_path("config/environment.rb")
     
     if Object.const_defined?(:Capybara)
       require "capybara/rails"

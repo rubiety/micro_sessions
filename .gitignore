@@ -1,0 +1,8 @@
+*.sqlite3
+*.sqlite
+*.log
+*.gem
+tmp/*
+Manifest
+pkg
+.bundle

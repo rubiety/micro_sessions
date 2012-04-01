@@ -17,6 +17,12 @@ Gem::Specification.new do |s|
   s.rubyforge_project = s.name
   s.required_rubygems_version = ">= 1.3.4"
   
-  s.add_dependency("actionpack", [">= 3.0.0"])
-  s.add_dependency("activesupport", [">= 3.0.0"])
+  s.add_dependency("rails", ["~> 3.0.0"])
+  s.add_development_dependency("rspec", ["~> 2.0"])
+  s.add_development_dependency("cucumber", ["~> 1.0.4"])
+  s.add_development_dependency("capybara", ["~> 1.1.0"])
+  s.add_development_dependency("sqlite3", ["~> 1.3.4"])
+  s.add_development_dependency('appraisal', ["~> 0.4.0"])
+  s.add_development_dependency("rdoc", ["~> 3.12"])
+  s.add_development_dependency "rake"
 end
