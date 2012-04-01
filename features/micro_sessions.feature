@@ -24,10 +24,12 @@ Feature: Micro Sessions
     And I save the following as "app/views/models/index.html.erb" in the rails application:
     """
     <%= link_to "New", :action => :new, :micro_sessions => true %>
+    <%= micro_session.id %>
     <%= micro_session[:string] %>
     """
     And I save the following as "app/views/models/new.html.erb" in the rails application:
     """
+    <%= micro_session.id %>
     <%= micro_session[:string] %>
     """
   
@@ -43,3 +45,4 @@ Feature: Micro Sessions
     When I go to the models page
     And I follow "New"
     Then I should see "String"
+

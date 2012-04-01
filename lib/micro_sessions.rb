@@ -1,13 +1,6 @@
-unless defined?(ActionController)
-  begin
-    require "action_pack"  
-    require "action_controller"
-    require "action_view"
-  rescue LoadError
-    require "rubygems"
-    require_gem "actionpack"
-  end
-end
+require "rails"
+require "action_controller"
+require "action_view"
 
 module MicroSessions
   extend ActiveSupport::Concern

@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: /Users/bhughes/Workspace/micro_sessions
   specs:
     micro_sessions (0.1.1)
       rails (>= 3.0.0)
@@ -129,6 +129,7 @@ DEPENDENCIES
   cucumber (~> 1.0.4)
   launchy
   micro_sessions!
+  rails (~> 3.0.12)
   rake
   rdoc (~> 3.12)
   rspec (~> 2.0)

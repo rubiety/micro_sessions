@@ -37,11 +37,11 @@ module MicroSessions
     def generate_id
       case options[:param_type]
       when :hash
-        ActiveSupport::SecureRandom.hex(options[:length] / 2)
+        (Object::const_defined?("SecureRandom") ? SecureRandom : ActiveSupport::SecureRandom).hex(options[:length] / 2)
       when :integer
         self.counter += 1
       when :random_integer
-        ActiveSupport::SecureRandom.integer
+        (Object::const_defined?("SecureRandom") ? SecureRandom : ActiveSupport::SecureRandom).integer
       end
     end
   end

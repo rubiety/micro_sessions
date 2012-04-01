@@ -55,8 +55,7 @@ When %r{I append the following to "([^"]*)" in the rails application} do |path, 
 end
 
 When %r{I run "([^"]*)" in the rails application} do |command|
-  Dir.chdir(Cukagem.app_root
-  ) do
+  Dir.chdir(Cukagem.app_root) do
     `#{command}`
   end
 end

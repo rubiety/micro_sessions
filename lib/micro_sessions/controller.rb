@@ -13,7 +13,7 @@ module MicroSessions
         options[:length] ||= 10
         options[:counter] ||= 1
         
-        class_inheritable_accessor :micro_session_options
+        class_attribute :micro_session_options
         self.micro_session_options = options
         
         class_eval do
