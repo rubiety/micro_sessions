@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     micro_sessions (0.1.1)
-      rails (>= 3.0.0)
+      rails (>= 3.0.0, < 3.2.0)
 
 GEM
   remote: http://rubygems.org/
