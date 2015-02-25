@@ -10,20 +10,20 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/rubiety/micro_sessions"
   s.summary     = "Keyed sessions within the global sessions object."
   s.description = "Provides 'micro-sessions' within the global sessions object keyed off an identifier."
-  
+
   s.files        = Dir["{lib,spec}/**/*", "[A-Z]*", "init.rb"]
   s.require_path = "lib"
-  
+
   s.rubyforge_project = s.name
   s.required_rubygems_version = ">= 1.3.4"
-  
-  s.add_dependency("rails", [">= 3.0.0", "< 3.2.0"])
+
+  s.add_dependency("rails", [">= 3.0.0", "<= 4.1.1"])
   s.add_development_dependency("rspec", ["~> 2.0"])
-  s.add_development_dependency("cucumber", ["~> 1.0.4"])
+  s.add_development_dependency("cucumber", ["~> 1.3.19"])
   s.add_development_dependency("capybara", ["~> 1.1.0"])
   s.add_development_dependency("sqlite3", ["~> 1.3.4"])
-  s.add_development_dependency('appraisal', ["~> 0.4.0"])
+  s.add_development_dependency('appraisal', ["~> 1.0.2"])
   s.add_development_dependency("rdoc", ["~> 3.12"])
-  s.add_development_dependency "rake"
-  s.add_development_dependency "launchy"
+  s.add_development_dependency("rake")
+  s.add_development_dependency("launchy")
 end

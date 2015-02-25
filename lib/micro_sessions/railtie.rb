@@ -1,12 +1,14 @@
 module MicroSessions
   class Railtie < Rails::Railtie
-    initializer "micro_sessions.insert" do
+    initializer "micro_sessions.configure_view_controller" do
       ActiveSupport.on_load(:action_controller) do
-        MicroSessions::Railtie.insert_controller
+        include MicroSessions::Controller
+        include MicroSessions::Helpers::UrlHelper
       end
 
       ActiveSupport.on_load(:action_view) do
-        MicroSessions::Railtie.insert_view
+        include MicroSessions::Helpers::FormTagHelper
+        include MicroSessions::Helpers::UrlHelper
       end
     end
 
@@ -22,11 +24,5 @@ module MicroSessions
 
     MicroSessions::Railtie.insert_controller
     MicroSessions::Railtie.insert_view
-
-    config.after_initialize do
-      MicroSessions::Railtie.insert_controller
-      MicroSessions::Railtie.insert_view
-    end
   end
 end
-
