@@ -3,6 +3,6 @@
 source "http://rubygems.org"
 
 gem "rails", "~> 3.0.12"
-gem "micro_sessions", :path=>"../"
+gem "micro_sessions", :path => "../"
 
-gemspec :path=>"../"
+gemspec :path => "../"

@@ -3,16 +3,16 @@ module MicroSessions
     def initialize(controller)
       @controller = controller
     end
-    
+
     def options
       @controller.class.micro_session_options
     end
-    
+
     def data
       @controller.session[options[:key]] ||= {}
       @controller.session[options[:key]][id] ||= {}
     end
-    
+
     def url_options
       if empty?
         {}
@@ -20,20 +20,19 @@ module MicroSessions
         {options[:param] => id}
       end
     end
-    
+
     delegate :empty?, :[], :[]=, :to_h, :to_hash, :inspect, :to => :data
-    
+
     def id
       @id ||= id_from_params || generate_id
     end
-    
-    
+
     protected
-    
+
     def id_from_params
       @controller.params[options[:param]] if @controller.params
     end
-    
+
     def generate_id
       case options[:param_type]
       when :hash
