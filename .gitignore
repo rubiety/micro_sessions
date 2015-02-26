@@ -3,6 +3,7 @@
 *.log
 *.gem
 tmp/*
+vendor/*
 Manifest
 pkg
 .bundle

@@ -11,6 +11,7 @@ module MicroSessions
     def data
       @controller.session[options[:key]] ||= {}
       @controller.session[options[:key]][id] ||= {}
+      @controller.session[options[:key]][id].symbolize_keys!
     end
 
     def url_options

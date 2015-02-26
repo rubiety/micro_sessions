@@ -31,7 +31,6 @@ end
 desc "Clean up files."
 task :clean do |t|
   FileUtils.rm_rf "tmp"
-  Dir.glob("spec/db/*.sqlite3").each {|f| FileUtils.rm f }
   Dir.glob("micro_sessions-*.gem").each {|f| FileUtils.rm f }
 end
 

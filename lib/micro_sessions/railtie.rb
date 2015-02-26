@@ -3,7 +3,6 @@ module MicroSessions
     initializer "micro_sessions.configure_view_controller" do
       ActiveSupport.on_load(:action_controller) do
         include MicroSessions::Controller
-        include MicroSessions::Helpers::UrlHelper
       end
 
       ActiveSupport.on_load(:action_view) do
@@ -14,7 +13,6 @@ module MicroSessions
 
     def self.insert_controller
       ActionController::Base.send(:include, MicroSessions::Controller)
-      ActionController::Base.send(:include, MicroSessions::Helpers::UrlHelper)
     end
 
     def self.insert_view
@@ -24,5 +22,10 @@ module MicroSessions
 
     MicroSessions::Railtie.insert_controller
     MicroSessions::Railtie.insert_view
+
+    config.after_initialize do
+      MicroSessions::Railtie.insert_controller
+      MicroSessions::Railtie.insert_view
+    end
   end
 end
