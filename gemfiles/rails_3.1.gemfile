@@ -8,7 +8,6 @@ gem "rails", "~> 3.1.4"
 
 group :development do
   gem "wwtd", "~> 1.3.0"
-  gem "cucumber", "~> 2.4.0"
   gem "appraisal", "~> 2.2.0"
 end
 

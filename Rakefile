@@ -3,7 +3,6 @@ require 'bundler/setup'
 
 require 'rake'
 require 'rspec/core/rake_task'
-require 'cucumber/rake/task'
 require 'appraisal'
 
 Bundler::GemHelper.install_tasks
@@ -21,12 +20,7 @@ desc "Run Specs"
 RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
-task :test => [:spec, :cucumber]
-
-Cucumber::Rake::Task.new(:cucumber) do |t|
-  t.fork = true
-  t.cucumber_opts = ['--format', (ENV['CUCUMBER_FORMAT'] || 'progress')]
-end
+task :test => [:spec]
 
 desc "Clean up files."
 task :clean do |t|
