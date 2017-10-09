@@ -16,7 +16,6 @@ group :test do
   gem 'launchy', '~> 2.4.3'
   gem 'sqlite3', '~> 1.3.4'
   gem 'addressable', '~> 2.3.7'
-  gem 'nokogiri', '~> 1.3.3'
 end
 
 gemspec
